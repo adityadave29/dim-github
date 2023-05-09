@@ -23,7 +23,7 @@ while True:
         elif k % 256 == 32:
             # For Space key
             print("Image " + str(count) + "saved")
-            file = '/home/pi/Desktop/DIM/img' + str(count) + '.jpg'
+            file = '/home/pi/Desktop/dim-github/img' + str(count) + '.jpg'
             cv2.imwrite(file, img)
             count += 1
 
