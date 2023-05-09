@@ -34,11 +34,11 @@ while True:
         text = pytesseract.image_to_string(img)
         print(text)
 
-        text_speech = pyttsx3.init()
-        text_speech.say(text)
-        text_speech.runAndWait()
-        cv2.waitKey(5)
-        print("Asking for new image no: ", count)
+        # text_speech = pyttsx3.init()
+        # text_speech.say(text)
+        # text_speech.runAndWait()
+        # cv2.waitKey(5)
+        # print("Asking for new image no: ", count)
 
 cam.release()
 cv2.destroyAllWindows()
