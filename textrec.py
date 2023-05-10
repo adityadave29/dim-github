@@ -55,7 +55,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", type=str, help="path to input image")
 ap.add_argument("-east", "--east", type=str,
                 help="path to input EAST text detector")
-ap.add_argument("_c"
+ap.add_argument("_c",
                 "--min-confidence", type=float,
                 default=0.5,
                 help="minimum probability required to inspect a region")
