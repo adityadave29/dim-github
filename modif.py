@@ -3,7 +3,7 @@ import pytesseract
 import pyttsx3
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
-count = 0
+# count = 0
 cam = cv2.VideoCapture(0)
 
 while True:
@@ -23,15 +23,15 @@ while True:
             break
         elif k % 256 == 32:
             # For Space key
-            print("Image " + str(count) + " saved")
-            file = '/home/pi/dim-github/img' + str(count) + '.jpg'
+            print("Image saved")
+            file = '/home/pi/dim-github/img.jpg'
             cv2.imwrite(file, img)
-            count += 1
+            # count += 1
 
     cam.release()
     cv2.destroyAllWindows()
 
-    img = cv2.imread('img' + str(count - 1) + '.jpg')
+    img = cv2.imread('img.jpg')
     cv2.imshow('sample img', img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
@@ -54,4 +54,4 @@ while True:
         engine.runAndWait()
     speak(text)
 
-    print("Asking for new image no: ", count)
+    print("Asking for new image")
