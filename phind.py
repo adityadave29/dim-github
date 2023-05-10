@@ -42,12 +42,16 @@ while True:
     text = pytesseract.image_to_string(img)
     print(text)
 
-    engine.setProperty('rate',80)
+    engine.setProperty('rate',70)
     voices=engine.getProperty('voices')
-    # for voice in voices:
-    print ("Using voice:"), repr(voice)
-    engine.setProperty('voice',voice.id==3)
-    engine.say("jineet the gian")
+    cnt=0
+    for voice in voices:
+        if(cnt==2):
+            print ("Using voice:"), repr(voice)
+            engine.setProperty('voice',voice.id)
+            engine.say("jineet the gian")
+            exit()
+        cnt=cnt+1
     engine.runAndWait()
     
     cv2.waitKey(5)
