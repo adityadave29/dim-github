@@ -27,7 +27,7 @@ def decode_predictions(scores, geometry):
         anglesData = geometry[0, 4, y]
 # loop over the number of columns
         for x in range(0, numCols):
-            if scoresData[x] < args["min confidence"]:
+            if scoresData[x] < args["min_confidence"]:
                 continue
 
             (offsetX, offsetY) = (x * 4.0, y * 4.0)
@@ -91,8 +91,7 @@ blob = cv2.dnn.blobFromImage (image, 1.0, (W, H),
                               (123.68, 116.78, 103.94), swapRB=True, crop=False) 
 net.setInput (blob)
 (scores, geometry) = net.forward (layerNames)
-(rects, confidences) = decode_predictions (scores,
-geometry)
+(rects, confidences) = decode_predictions(scores,geometry)
 boxes = non_max_suppression (np.array (rects),
 probs=confidences)
 
