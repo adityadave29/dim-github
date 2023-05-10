@@ -3,14 +3,9 @@ import pytesseract
 import pyttsx3
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
-
-def speak(text):
-    engine = pyttsx3.init()
-    engine.setProperty('rate', 150)  # Speed of speech
-    engine.say(text)
-    engine.runAndWait()
-
 cam = cv2.VideoCapture(0)
+space_pressed = False
+
 while True:
     ret, img = cam.read()
     cv2.imshow("Test", img)
@@ -29,15 +24,23 @@ while True:
         print("Image saved")
         file = '/home/pi/dim-github/img.jpg'
         cv2.imwrite(file, img)
-        
-        img = cv2.imread(file)
+        space_pressed = True
+
+    if space_pressed:
+        cv2.destroyAllWindows()
+        img = cv2.imread('img.jpg')
         cv2.imshow('sample img', img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
         text = pytesseract.image_to_string(img)
         print(text)
-        speak(text)
 
-cam.release()
-cv2.destroyAllWindows()
+        def speak(text):
+            engine = pyttsx3.init()
+            engine.setProperty('rate', 150)  # Speed of speech
+            engine.say(text)
+            engine.runAndWait()
+
+        speak(text)
+        break
