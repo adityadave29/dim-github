@@ -39,7 +39,7 @@ def decode_predictions(scores, geometry):
             h = xData0[x] + xData2[x]
             w = xData1[x] + xData3[x]
 
-            endx = int(offsetX + (cos * xData1[x]) + (sin + xData2[x]))
+            endX = int(offsetX + (cos * xData1[x]) + (sin + xData2[x]))
             endY = int(offsetY - (sin * xData1[x]) + (cos * xData2[x]))
             startX = int(endX - w)
             startY = int(endY - h)
