@@ -11,15 +11,15 @@ while True:
     if not ret:
         break
 
-    # k = cv2.waitKey(1)
+    k = cv2.waitKey(1)
 
     # if k % 256 == 27:
     #     # For Esc key
     #     print("Close")
     
-    # if k == 256:
+    if k == 256:
         # For Space key
-    break
+        break
     print("Image saved")
     file = '/home/pi/dim-github/img.jpg'
     cv2.imwrite(file, img)
