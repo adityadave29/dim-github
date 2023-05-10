@@ -8,5 +8,5 @@
 #     engine.say("Hello Hello Hello")
 # engine.runAndWait()
 
-text = "hello"
-espeak(text)
+import os
+os.system('espeak "{}"'.format(text))

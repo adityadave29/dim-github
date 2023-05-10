@@ -42,4 +42,7 @@ while True:
     # text_speech.say(text)
     # text_speech.runAndWait()
     # cv2.waitKey(5)
+        
+    import os
+    os.system('espeak "{}"'.format(text))
     print("Asking for new image no: ", count)
