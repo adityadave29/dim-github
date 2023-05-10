@@ -13,11 +13,11 @@ while True:
 
     k = cv2.waitKey(1)
 
-    if k % 256 == 27:
-        # For Esc key
-        print("Close")
-        break
-    elif k % 256 == 32:
+    # if k % 256 == 27:
+    #     # For Esc key
+    #     print("Close")
+    #     break
+    if k % 256 == 32:
         # For Space key
         print("Image saved")
         file = '/home/pi/dim-github/img.jpg'
