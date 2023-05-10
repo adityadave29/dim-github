@@ -2,6 +2,10 @@ import cv2
 import pytesseract
 import pyttsx3
 
+
+
+
+
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 count = 0
 cam = cv2.VideoCapture(0)
@@ -43,6 +47,15 @@ while True:
     # text_speech.runAndWait()
     # cv2.waitKey(5)
         
-    import os
-    os.system('espeak "{}"'.format(text))
+    # import os
+    # os.system('espeak "{}"'.format(text))
+
+    def speak(text):
+        engine = pyttsx3.init()
+        engine.setProperty('rate', 150)  # Speed of speech
+        engine.say(text)
+        engine.runAndWait()
+    speak(text)
+
+    
     print("Asking for new image no: ", count)
