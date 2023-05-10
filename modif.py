@@ -28,7 +28,7 @@ cv2.destroyAllWindows()
 
 img = cv2.imread('img.jpg')
 cv2.imshow('sample img', img)
-# cv2.waitKey(0)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 text = pytesseract.image_to_string(img)
