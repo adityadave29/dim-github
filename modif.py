@@ -29,7 +29,7 @@ while True:
 
     img = cv2.imread('img' + str(count - 1) + '.jpg')
     cv2.imshow('sample img', img)
-    cv2.waitKey(0)
+    cv2.waitKey(1)
     cv2.destroyAllWindows()
 
     text = pytesseract.image_to_string(img)
