@@ -85,7 +85,7 @@ layerNames = [
     "feature_fusion/concat_3"]
 # load the pre-trained EAST text detector
 print (" [INFO] loading EAST text detector...")
-net = cv2.dnn.readNet (args ["east"])
+net = cv2.dnn.readNet(args["east"])
 
 blob = cv2.dnn.blobFromImage (image, 1.0, (W, H),
                               (123.68, 116.78, 103.94), swapRB=True, crop=False) 
