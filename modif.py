@@ -16,13 +16,13 @@ while True:
     # if k % 256 == 27:
     #     # For Esc key
     #     print("Close")
-    
+    break 
     if k == 256:
         # For Space key
-        break
-    print("Image saved")
-    file = '/home/pi/dim-github/img.jpg'
-    cv2.imwrite(file, img)
+        
+        print("Image saved")
+        file = '/home/pi/dim-github/img.jpg'
+        cv2.imwrite(file, img)
 
 cam.release()
 cv2.destroyAllWindows()
