@@ -4,7 +4,7 @@ import pyttsx3
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 # count = 0
-cam = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1) 
 
 while True:
     print("Hello")
