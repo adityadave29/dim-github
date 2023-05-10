@@ -5,10 +5,6 @@ import pyttsx3
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 count = 0
 cam = cv2.VideoCapture(0)
-
-import pyttsx3
-engine= pyttsx3.init()
-
 while True:
     print("Hello")
     while True:
@@ -42,27 +38,8 @@ while True:
     text = pytesseract.image_to_string(img)
     print(text)
 
-    # engine.setProperty('rate',70)
-    # voices=engine.getProperty('voices')
-    # cnt=0
-    # for voice in voices:
-    #     if(cnt==2):
-    #         print ("Using voice:"), repr(voice)
-    #         engine.setProperty('voice',voice.id)
-    #         engine.say("jineet the gian")
-    #         exit()
-    #     cnt=cnt+1
-    # engine.runAndWait()
-    
-    import os
-
-    def text_to_speech(text):
-        cmd = f'espeak "{text}"'
-        os.system(cmd)
-
-    text = "Hello, this is a test for text to speech conversion."
-    text_to_speech(text)
+    text_speech = pyttsx3.init()
+    text_speech.say(text)
+    text_speech.runAndWait()
     cv2.waitKey(5)
     print("Asking for new image no: ", count)
-
-
