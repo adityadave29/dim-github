@@ -4,14 +4,16 @@ import pyttsx3
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 # count = 0
-cam = cv2.VideoCapture(1) 
+cam = cv2.VideoCapture(0)
 
 while True:
     print("Hello")
     while True:
         ret, img = cam.read()
-        cv2.imshow("Test", img)
-
+        if img is not None:
+            cv2.imshow("Test", img)
+        else:
+            print("Error")
         if not ret:
             break
 
@@ -54,4 +56,4 @@ while True:
         engine.runAndWait()
     speak(text)
 
-    print("Asking for new image")
+    print("Asking for new image ")
