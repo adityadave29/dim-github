@@ -2,10 +2,6 @@ import cv2
 import pytesseract
 import pyttsx3
 
-
-
-
-
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 count = 0
 cam = cv2.VideoCapture(0)
