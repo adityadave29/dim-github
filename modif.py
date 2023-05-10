@@ -10,6 +10,7 @@ while True:
     print("Hello")
     while True:
         ret, img = cam.read()
+        img = cv2.resize(img,(800,600))
         if img is not None:
             cv2.imshow("Test", img)
         else:
