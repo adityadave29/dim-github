@@ -7,21 +7,22 @@ cam = cv2.VideoCapture(0)
 while True:
     ret, img = cam.read()
     cv2.imshow("Test", img)
-
+    
     if not ret:
         break
 
-    k = cv2.waitKey(1)
+    # k = cv2.waitKey(1)
 
     # if k % 256 == 27:
     #     # For Esc key
     #     print("Close")
-    #     break
-    if k % 256 == 32:
+    
+    # if k == 256:
         # For Space key
-        print("Image saved")
-        file = '/home/pi/dim-github/img.jpg'
-        cv2.imwrite(file, img)
+    break
+    print("Image saved")
+    file = '/home/pi/dim-github/img.jpg'
+    cv2.imwrite(file, img)
 
 cam.release()
 cv2.destroyAllWindows()
