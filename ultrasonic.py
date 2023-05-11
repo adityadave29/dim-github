@@ -1,11 +1,8 @@
-from gpiozero import DistanceSensor, TonalBuzzer
-from gpiozero.tones import Tone
+from gpiozero import DistanceSensor
 from time import sleep
 
 uds = DistanceSensor(trigger=27, echo=22)
-buzzer = TonalBuzzer(21, octaves=3)
 
 while True:
-	print(sensor.distance)
-	buzzer.play(Tone(midi=69))
+	print(uds.distance)
 	sleep(1)
