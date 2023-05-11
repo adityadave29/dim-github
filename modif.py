@@ -18,7 +18,7 @@ while True:
         # k = cv2.waitKey(1)
 
         button2 = Button(27)
-        if button2.when_pressed==True:
+        if button2.is_pressed:
             # For Space key
             print("Image saved")
             file = '/home/pi/dim-github/img.jpg'
