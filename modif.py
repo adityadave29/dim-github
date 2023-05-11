@@ -2,6 +2,8 @@ import cv2
 import pytesseract
 import pyttsx3
 import sys
+from gpiozero import Button
+
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 while True:
@@ -15,7 +17,8 @@ while True:
 
         k = cv2.waitKey(1)
 
-        if k % 256 == 32:
+        button2 = Button(18)
+        if button2.when_pressed:
             # For Space key
             print("Image saved")
             file = '/home/pi/dim-github/img.jpg'

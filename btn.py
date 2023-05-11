@@ -1,4 +1,5 @@
 from gpiozero import Button
+
 import os
 
 def call_script():
@@ -6,6 +7,7 @@ def call_script():
     os.system("python3 modif.py")
 
 button = Button(17)
+
 button.when_pressed = call_script
 
 while True:
