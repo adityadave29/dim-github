@@ -1,6 +1,8 @@
 import cv2
 import pytesseract
 import pyttsx3
+import sys
+
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 cam = cv2.VideoCapture(0)
@@ -38,6 +40,5 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 speak(text)
-exit()
-
+sys.exit()
 
