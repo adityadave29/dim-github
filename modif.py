@@ -1,12 +1,9 @@
 import cv2
 import pytesseract
 import pyttsx3
-import sys
 from gpiozero import Button
 
-
-pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
-while True:
+def capture_image():
     cam = cv2.VideoCapture(0)
     while True:
         ret, img = cam.read()
@@ -15,10 +12,9 @@ while True:
         if not ret:
             break
 
-        # k = cv2.waitKey(1)
+        k = cv2.waitKey(1)
 
-        button2 = Button(27)
-        if button2.is_pressed:
+        if k % 256 == 32:
             # For Space key
             print("Image saved")
             file = '/home/pi/dim-github/img.jpg'
@@ -33,12 +29,18 @@ while True:
     text = pytesseract.image_to_string(img)
     print(text)
 
-    def speak(text):
-        engine = pyttsx3.init()
-        engine.setProperty('rate', 150)  # Speed of speech
-        engine.say(text)
-        engine.runAndWait()
-
     speak(text)
 
-# sys.exit()  # Add this line to exit the code
+def speak(text):
+    engine = pyttsx3.init()
+    engine.setProperty('rate', 150)  # Speed of speech
+    engine.say(text)
+    engine.runAndWait()
+
+# Set up the GPIO button and callback function
+button = Button(18)  # Replace 17 with the GPIO pin number you are using
+button.when_pressed = capture_image
+
+# Keep the script running
+while True:
+    pass
