@@ -3,7 +3,6 @@ import pytesseract
 import pyttsx3
 import sys
 
-
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 cam = cv2.VideoCapture(0)
 while True:
@@ -27,10 +26,6 @@ cam.release()
 cv2.destroyAllWindows()
 
 img = cv2.imread('img.jpg')
-# cv2.imshow('sample img', img)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
-
 text = pytesseract.image_to_string(img)
 print(text)
 
@@ -39,6 +34,7 @@ def speak(text):
     engine.setProperty('rate', 150)  # Speed of speech
     engine.say(text)
     engine.runAndWait()
+
 speak(text)
 
-
+sys.exit()  # Add this line to exit the code
