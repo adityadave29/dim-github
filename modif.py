@@ -46,14 +46,12 @@ import RPi.GPIO as GPIO
 
 # Set up GPIO
 button_pin = 18  # GPIO pin number for the button
-button_pin1 = 17  # GPIO pin number for the button
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(button_pin1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
-button_state2 = GPIO.input(button_pin1)
-while button_state2 == GPIO.LOW:
+print("modif")
+while True:
     cam = cv2.VideoCapture(0)
 
     while True:
