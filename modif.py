@@ -15,7 +15,7 @@ while True:
         if not ret:
             break
 
-        k = cv2.waitKey(1)
+        # k = cv2.waitKey(1)
 
         button2 = Button(18)
         if button2.when_pressed:
