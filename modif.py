@@ -39,6 +39,7 @@
 #     engine.runAndWait()
 # speak(text)
 
+from builtins import exit
 import cv2
 import pytesseract
 import pyttsx3
@@ -50,8 +51,11 @@ button_pin = 18  # GPIO pin number for the button
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+def killOf():
+    exit()
+    return
 button = Button(17)
-button.when_pressed = exit()
+button.when_pressed = killOf
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 print("modif")
