@@ -50,36 +50,37 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
-cam = cv2.VideoCapture(0)
-
 while True:
-    ret, img = cam.read()
-    cv2.imshow("Test", img)
+    cam = cv2.VideoCapture(0)
 
-    if not ret:
-        break
+    while True:
+        ret, img = cam.read()
+        cv2.imshow("Test", img)
 
-    button_state = GPIO.input(button_pin)
+        if not ret:
+            break
 
-    if button_state == GPIO.LOW:
-        # Button pressed
-        print("Image saved")
-        file = '/home/pi/dim-github/img.jpg'
-        cv2.imwrite(file, img)
-        print("Close")
-        break
+        button_state = GPIO.input(button_pin)
 
-cam.release()
-cv2.destroyAllWindows()
+        if button_state == GPIO.LOW:
+            # Button pressed
+            print("Image saved")
+            file = '/home/pi/dim-github/img.jpg'
+            cv2.imwrite(file, img)
+            print("Close")
+            break
 
-img = cv2.imread('img.jpg')
-text = pytesseract.image_to_string(img)
-print(text)
+    cam.release()
+    cv2.destroyAllWindows()
 
-def speak(text):
-    engine = pyttsx3.init()
-    engine.setProperty('rate', 150)  # Speed of speech
-    engine.say(text)
-    engine.runAndWait()
+    img = cv2.imread('img.jpg')
+    text = pytesseract.image_to_string(img)
+    print(text)
 
-speak(text)
+    def speak(text):
+        engine = pyttsx3.init()
+        engine.setProperty('rate', 150)  # Speed of speech
+        engine.say(text)
+        engine.runAndWait()
+
+    speak(text)
