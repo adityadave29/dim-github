@@ -1,10 +1,22 @@
 from gpiozero import Button
-
 import os
+file = open("count.txt","w")
+file.write(str(0))
+file.close()
 
 def call_script():
-    print("Button pressed. Calling script...")
-    os.system("python3 modif.py")
+    count = open("count.txt","r")
+    cnt = int(count.read())
+    count.close()
+    if(cnt % 2 == 0):
+        print("Button pressed. Calling script...")
+        os.system("python3 modif.py")
+    else:
+        os.system("Stoping....")
+    cnt += 1
+    count = open("count.txt","w")
+    count.write(str(cnt))
+    count.close()
 
 button = Button(17)
 
