@@ -5,22 +5,22 @@ import sys
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 cam = cv2.VideoCapture(0)
-while True:
-    ret, img = cam.read()
-    cv2.imshow("Test", img)
 
-    if not ret:
-        break
+ret, img = cam.read()
+cv2.imshow("Test", img)
 
-    k = cv2.waitKey(1)
+# if not ret:
+#     break
 
-    if k % 256 == 32:
-        # For Space key
-        print("Image saved")
-        file = '/home/pi/dim-github/img.jpg'
-        cv2.imwrite(file, img)
-        print("Close")
-        break
+k = cv2.waitKey(1)
+
+if k % 256 == 32:
+    # For Space key
+    print("Image saved")
+    file = '/home/pi/dim-github/img.jpg'
+    cv2.imwrite(file, img)
+    print("Close")
+    # break
 
 cam.release()
 cv2.destroyAllWindows()
@@ -37,4 +37,4 @@ def speak(text):
 
 speak(text)
 
-sys.exit()  # Add this line to exit the code
+# sys.exit()  # Add this line to exit the code
