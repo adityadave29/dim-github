@@ -39,6 +39,7 @@ def speak(text):
     engine.setProperty('rate', 150)  # Speed of speech
     engine.say(text)
     engine.runAndWait()
+    sys.exit()
 speak(text)
-sys.exit()
+
 
