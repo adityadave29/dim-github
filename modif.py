@@ -12,10 +12,7 @@ def capture_image():
         if not ret:
             break
 
-        k = cv2.waitKey(1)
-
-        if k % 256 == 32:
-            # For Space key
+        else:
             print("Image saved")
             file = '/home/pi/dim-github/img.jpg'
             cv2.imwrite(file, img)
