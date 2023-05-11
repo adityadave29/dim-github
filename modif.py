@@ -43,11 +43,15 @@ import cv2
 import pytesseract
 import pyttsx3
 import RPi.GPIO as GPIO
+from gpiozero import Button
 
 # Set up GPIO
 button_pin = 18  # GPIO pin number for the button
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+button = Button(17)
+button.when_pressed = exit()
 
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 print("modif")
