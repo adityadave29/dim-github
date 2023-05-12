@@ -5,7 +5,7 @@ import pyttsx3
 import RPi.GPIO as GPIO
 
 # Set up GPIO
-button_pin = 18  # GPIO pin number for the button
+button_pin = 27  # GPIO pin number for the button
 exit_pin = 17
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
