@@ -52,50 +52,56 @@
 import RPi.GPIO as GPIO
 import time
 
-# set GPIO numbering mode to BCM
+button_pin = 26  # GPIO pin number for the button
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-# set up pins for sensor and buzzer
-trig = 18
-echo = 24
-buzzer = 16
+button_state = GPIO.input(button_pin)	
+if button_state == GPIO.LOW:
+# set GPIO numbering mode to BCM
+	GPIO.setmode(GPIO.BCM)
 
-# set up GPIO direction for sensor and buzzer
-GPIO.setup(trig, GPIO.OUT)
-GPIO.setup(echo, GPIO.IN)
-GPIO.setup(buzzer, GPIO.OUT)
+	# set up pins for sensor and buzzer
+	trig = 18
+	echo = 24
+	buzzer = 16
 
-def get_distance():
-    # trigger sensor to send ultrasonic signal
-    GPIO.output(trig, True)
-    time.sleep(0.00001)
-    GPIO.output(trig, False)
+	# set up GPIO direction for sensor and buzzer
+	GPIO.setup(trig, GPIO.OUT)
+	GPIO.setup(echo, GPIO.IN)
+	GPIO.setup(buzzer, GPIO.OUT)
 
-    # measure time for ultrasonic signal to bounce back
-    pulse_start = time.time()
-    pulse_end = time.time()
-    while GPIO.input(echo) == 0:
-        pulse_start = time.time()
-    while GPIO.input(echo) == 1:
-        pulse_end = time.time()
+	def get_distance():
+		# trigger sensor to send ultrasonic signal
+		GPIO.output(trig, True)
+		time.sleep(0.00001)
+		GPIO.output(trig, False)
 
-    # calculate distance in centimeters
-    pulse_duration = pulse_end - pulse_start
-    distance = pulse_duration * 17150
-    return distance
+		# measure time for ultrasonic signal to bounce back
+		pulse_start = time.time()
+		pulse_end = time.time()
+		while GPIO.input(echo) == 0:
+			pulse_start = time.time()
+		while GPIO.input(echo) == 1:
+			pulse_end = time.time()
 
-try:
-    while True:
-        distance = get_distance()
-        print("Distance: %.2f cm" % distance)
+		# calculate distance in centimeters
+		pulse_duration = pulse_end - pulse_start
+		distance = pulse_duration * 17150
+		return distance
 
-        # turn on buzzer if object is within 50 cm
-        if distance < 50:
-            GPIO.output(buzzer, True)
-        else:
-            GPIO.output(buzzer, False)
+	try:
+		while True:
+			distance = get_distance()
+			print("Distance: %.2f cm" % distance)
 
-        time.sleep(0.5)
+			# turn on buzzer if object is within 50 cm
+			if distance < 50:
+				GPIO.output(buzzer, True)
+			else:
+				GPIO.output(buzzer, False)
 
-except KeyboardInterrupt:
-    GPIO.cleanup()
+			time.sleep(0.5)
+
+	except KeyboardInterrupt:
+		GPIO.cleanup()

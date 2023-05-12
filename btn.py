@@ -5,8 +5,13 @@ import os
 def call_script():
     print("Button pressed. Calling script...")
     os.system("python3 modif.py")
+def call_script2():
+    print("Button pressed. Calling script...")
+    os.system("python3 modif.py")
 
 button = Button(17)
+button2 = Button(26)
+button.when_pressed = call_script
 button.when_pressed = call_script
 
 while True:
