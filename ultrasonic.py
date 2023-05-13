@@ -52,13 +52,20 @@
 import RPi.GPIO as GPIO
 import time
 
+
 button_pin = 26  # GPIO pin number for the button
+exit_pin = 26
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(exit_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
 
 button_state = GPIO.input(button_pin)	
+exit_state = GPIO.input(exit_pin)
+
 if button_state == GPIO.LOW:
 # set GPIO numbering mode to BCM
+	
 	GPIO.setmode(GPIO.BCM)
 
 	# set up pins for sensor and buzzer
@@ -105,3 +112,7 @@ if button_state == GPIO.LOW:
 
 	except KeyboardInterrupt:
 		GPIO.cleanup()
+
+if exit_state == GPIO.LOW:
+        print("Exiting...")
+        exit()
