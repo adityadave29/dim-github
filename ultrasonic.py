@@ -47,6 +47,10 @@ if button_state == GPIO.LOW:
 
 	try:
 		while True:
+			if exit_state == GPIO.LOW:
+				print("Exiting...")
+				exit()
+				break
 			distance = get_distance()
 			print("Distance: %.2f cm" % distance)
 
@@ -61,7 +65,3 @@ if button_state == GPIO.LOW:
 	except KeyboardInterrupt:
 		GPIO.cleanup()
 
-if exit_state == GPIO.LOW:
-        print("Exiting...")
-        exit()
-        # break
