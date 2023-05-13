@@ -16,7 +16,8 @@ cam = cv2.VideoCapture(0)
 
 while True:
     ret, img = cam.read()
-    cv2.imshow("Test", img)
+    # cv2.imshow("Test", img)
+    
 
     if not ret:
         break
@@ -40,7 +41,7 @@ while True:
 cam.release()
 cv2.destroyAllWindows()
 
-img = cv2.imread('img.jpg')
+img = cv2.imread('/home/pi/dim-github/img.jpg')
 text = pytesseract.image_to_string(img)
 print(text)
 
