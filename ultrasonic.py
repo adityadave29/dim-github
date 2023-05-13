@@ -45,7 +45,7 @@ if button_state == GPIO.LOW:
 			print("Distance: %.2f cm" % distance)
 
 			# turn on buzzer if object is within 50 cm
-			if distance < 50:
+			if distance < 100:
 				GPIO.output(buzzer, True)
 			else:
 				GPIO.output(buzzer, False)
